@@ -77,6 +77,7 @@ public class BallController : MonoBehaviour
         {
             Debug.Log("Game Over!!!");
             Destroy(gameObject, 2f);
+            GameController.Instance.SwitchScreen(EGameScreens.GAMEOVER);
         }
     }
 }
