@@ -79,5 +79,18 @@ public class BallController : MonoBehaviour
             Destroy(gameObject, 2f);
             GameController.Instance.SwitchScreen(EGameScreens.GAMEOVER);
         }
+
+        if (other.transform.tag.Equals("speedboost"))
+        {
+            Debug.Log("Speeeeeed!!!");
+            ballSpeed = ballSpeed + 2f;
+        }
+
+        if (other.transform.tag.Equals("levelcomplete"))
+        {
+            Debug.Log("Level Complete!!!");
+            Destroy(gameObject, 1f);
+            GameController.Instance.SwitchScreen(EGameScreens.LEVELCOMPLETE);
+        }
     }
 }

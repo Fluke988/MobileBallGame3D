@@ -5,7 +5,7 @@ using UnityEngine;
 
 //public enum EScene { SPLASH, MENU, LEVELSELECTION, GAME}
 //public enum EMenuScreens { HOME, CREDITS }
-public enum EGameScreens { GAME, GAMEOVER}
+public enum EGameScreens { GAME, GAMEOVER, LEVELCOMPLETE}
 //public enum EDiceTag { BLUE, GREEN, PINK, RED, VIOLET, YELLOW, NONE, DEADZONE }
 //public enum ELevels { BEG, INTER, PRO}
 
