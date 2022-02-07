@@ -21,9 +21,9 @@ public class BallController : MonoBehaviour
     
     void Start()
     {
-        xVal = Random.Range(-4.5f, 4.5f);
-        zVal = Random.Range(-9f, -1f);
-        transform.position = new Vector3(xVal, 0, zVal);
+        xVal = Random.Range(-4.2f, 4.0f);
+        zVal = Random.Range(-4.0f, -4.0f);
+        transform.position = new Vector3(xVal, 3.25f, zVal);
         //rb.velocity = new Vector3(ballspeed,0,0);
     }
 
@@ -39,6 +39,12 @@ public class BallController : MonoBehaviour
             }
         }
 
+        if(this.transform.position.y<-3.0f)
+        {
+            Debug.Log("Game Over!!!");
+            Destroy(gameObject, 2f);
+            GameController.Instance.SwitchScreen(EGameScreens.GAMEOVER);
+        }
         //Debug.DrawRay(transform.position, Vector3.down, Color.black);
 
         //if(!Physics.Raycast(transform.position, Vector3.down, 1f))
@@ -73,24 +79,31 @@ public class BallController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag.Equals("ground"))
-        {
-            Debug.Log("Game Over!!!");
-            Destroy(gameObject, 2f);
-            GameController.Instance.SwitchScreen(EGameScreens.GAMEOVER);
-        }
-
+        //if (other.transform.tag.Equals("ground"))
+        //if(!other.transform.tag.Equals("ground"))
+        //{
+        //    Debug.Log("Game Over!!!");
+        //    Destroy(gameObject, 2f);
+        //    GameController.Instance.SwitchScreen(EGameScreens.GAMEOVER);
+        //}
+       
+        //else
         if (other.transform.tag.Equals("speedboost"))
         {
             Debug.Log("Speeeeeed!!!");
             ballSpeed = ballSpeed + 2f;
         }
 
-        if (other.transform.tag.Equals("levelcomplete"))
+        else if (other.transform.tag.Equals("levelcomplete"))
         {
             Debug.Log("Level Complete!!!");
             Destroy(gameObject, 1f);
             GameController.Instance.SwitchScreen(EGameScreens.LEVELCOMPLETE);
+        }
+
+        else
+        {
+            
         }
     }
 }
